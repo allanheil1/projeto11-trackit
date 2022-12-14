@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
+import LoginPage from './pages/LoginPage/LoginPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
+import HabitsPage from './pages/HabitsPage/HabitsPage';
+import GlobalStyle from './styles/globalStyle';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <Margin>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<LoginPage />}/>
+          <Route path='/cadastro' element={<SignUpPage />}/>
+          <Route path='/habitos' element={<HabitsPage />}/>
+        </Routes>
+      </BrowserRouter>
+      </Margin >
+    </>
   );
 }
 
-export default App;
+const Margin = styled.div`
+  margin-top: 70px;
+  margin-bottom: 91px;
+`
+
+
