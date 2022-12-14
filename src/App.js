@@ -10,7 +10,7 @@ export default function App() {
   return (
     <>
       <GlobalStyle />
-      <Margin>
+      <Wrapper>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<LoginPage />}/>
@@ -18,14 +18,17 @@ export default function App() {
           <Route path='/habitos' element={<HabitsPage />}/>
         </Routes>
       </BrowserRouter>
-      </Margin >
+      </Wrapper >
     </>
   );
 }
 
-const Margin = styled.div`
+const Wrapper = styled.div`
   margin-top: 70px;
   margin-bottom: 91px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 

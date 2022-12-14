@@ -2,6 +2,15 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 
+body {
+	font-family: 'Lexend Deca', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	display:flex;
+  	flex-direction: column;
+  	align-items: center;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
