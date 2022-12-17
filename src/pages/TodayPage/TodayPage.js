@@ -11,7 +11,7 @@ export default function HabitsPage() {
         <TodayPageStyle>
           <TodayTitle>
             <h1> Segunda, 17/05 </h1>
-            <h2>Nenhum hábito concluído ainda</h2>
+            <h2> Nenhum hábito concluído ainda </h2>
           </TodayTitle>
           <TodayHabit />
         </TodayPageStyle>

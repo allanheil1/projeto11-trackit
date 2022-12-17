@@ -31,6 +31,6 @@ export const TodayTitle = styled.div`
         margin-top: 5px;
         margin-left: 28px;
         font-size: 18px;
-        color: #BABABA
+        color: #BABABA;
     }
 `
