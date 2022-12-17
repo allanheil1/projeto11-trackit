@@ -21,8 +21,10 @@ export default function SignUpPage() {
   }
 
 const SignUpPageStyles = styled.div`
+  height: 100vh;
 	display:flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: white;
   img{

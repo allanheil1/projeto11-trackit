@@ -12,7 +12,6 @@ export default function App() {
   return (
     <>
       <GlobalStyle />
-      <Wrapper>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<LoginPage />}/>
@@ -22,14 +21,8 @@ export default function App() {
           <Route path='/historico' element={<HistoryPage />}/>
         </Routes>
       </BrowserRouter>
-      </Wrapper >
     </>
   );
 }
-
-const Wrapper = styled.div`
-  margin-top: 70px;
-  margin-bottom: 91px;
-`
 
 
