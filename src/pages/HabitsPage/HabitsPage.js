@@ -19,7 +19,8 @@ export default function HabitsPage(){
     useEffect(() => {
       const config = { headers: {Authorization: `Bearer ${token}`}};
       const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits', config);
-      promise.then((res) => { 
+      promise.then((res) => {
+        console.log(res.data);
         setHabits(res.data);
         //caso venha dados, nao precisamos mais mostrar a mensagem de 'não há hábitos'
         res.data.length > 0 && SetEmptyMessageView(false);
@@ -28,7 +29,7 @@ export default function HabitsPage(){
         const errorMsg = err.response.statusText;
         alert(`Erro: ${errorMsg}`);
       });
-    });
+    }, []);
 
     function showCreateHabit(){
       setIsCreatingHabit(!isCreatingHabit);
@@ -64,25 +65,3 @@ export default function HabitsPage(){
       </>  
     );
   }
-
-
-
-
-      // if(habits.length === 0){
-    //   return(
-    //     <>
-    //       <Header />
-    //       <HabitsPageStyle>
-    //         <MyHabits>
-    //           <h1> Meus hábitos </h1>
-    //           <button onClick={showCreateHabit}> + </button>
-    //         </MyHabits>
-    //         <EmptyMessage>
-    //           Você não tem nenhum hábito cadastrado ainda. 
-    //           Adicione um hábito para começar a trackear!
-    //         </EmptyMessage>
-    //       </HabitsPageStyle>
-    //       <Footer />
-    //     </>
-    //   );
-    // }

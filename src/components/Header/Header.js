@@ -1,12 +1,18 @@
+import { useContext } from 'react';
+
 import LogoName from '../../assets/logoname.png'
 import { HeaderStyle } from './style';
+import UserContext from '../../contexts/UserContext';
 
 export default function Header() {
+
+    const { userIcon } = useContext(UserContext);
+
     return (
       <HeaderStyle>
         <img src={LogoName}/>
         <div>
-          <img src='https://p.kindpng.com/picc/s/184-1845046_transparent-mtg-card-back-png-magic-the-gathering.png' />
+          <img src={userIcon} />
         </div>
       </HeaderStyle>
     );

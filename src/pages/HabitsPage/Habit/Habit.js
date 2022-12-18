@@ -1,13 +1,13 @@
-import Weekdays from '../../../components/Weekdays/Weekdays';
+import WeekdaysShowOnly from '../../../components/Weekdays/WeekdaysShowOnly';
 import { HabitStyle } from './style';
 import Trashbin from '../../../assets/trashbin.png'
 
-export default function Habit({ habitName }) {
+export default function Habit({ habitName, habitDays }) {
     return (
       <HabitStyle>
           <h1> {habitName} </h1>
           <img src={Trashbin} /> 
-          <Weekdays />
+          <WeekdaysShowOnly habitDays={habitDays}/>
       </HabitStyle>
     );
   }
