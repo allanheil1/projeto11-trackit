@@ -1,16 +1,70 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { ThreeDots } from 'react-loader-spinner';
+import axios from 'axios';
+import { useState } from 'react';
+
 import Logo from '../../assets/logo.png'
+import { SignUpPageStyles, Login, Form } from './style'
 
 export default function SignUpPage() {
+
+    const navigate = useNavigate();
+    const [signUpData, setSignUpData] = useState({
+      email: '',
+      name: '',
+      image: '',
+      password: ''
+    });
+    const [isLoading, setIsLoading] = useState(false);
+
+    function SignUpAPI(e){
+      e.preventDefault();
+      setIsLoading(true);
+      const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up', { ...signUpData });
+      promise.then(() => {
+        setIsLoading(false);
+        navigate('/');
+      });
+      promise.catch((err) => {
+        setIsLoading(false);
+        const errorMsg = err.response.statusText;
+        alert(`Erro: ${errorMsg}`);
+      })
+    }
+
+    function OnChange(e) {
+      setSignUpData({ ...signUpData, [e.target.name]: e.target.value});
+    }
+
     return (
       <SignUpPageStyles>
         <img src={Logo} />
-        <input type='email' placeholder='email'></input>
-        <input type='password' placeholder='senha'></input>
-        <input type='text' placeholder='nome'></input>
-        <input type='text' placeholder='foto'></input>
-        <button>Cadastrar</button>
+
+        <Form onSubmit={SignUpAPI}>
+          <input 
+            type='email' placeholder='email'
+            value={signUpData.email} name='email'
+            onChange={OnChange} required
+          />
+          <input 
+            type='password' placeholder='senha'
+            value={signUpData.password} name='password'
+            onChange={OnChange} required
+          />
+          <input 
+            type='text' placeholder='nome'
+            value={signUpData.name} name='name'
+            onChange={OnChange} required
+          />
+          <input 
+            type='text' placeholder='foto'
+            value={signUpData.image} name='image'
+            onChange={OnChange} required
+          />
+          <button type='submit' disabled={isLoading}>Cadastrar</button>
+        </Form>
+
         <Link to='/'>
           <Login>
             Já tem uma conta? Faça Login!
@@ -20,56 +74,13 @@ export default function SignUpPage() {
     );
   }
 
-const SignUpPageStyles = styled.div`
-  height: 100vh;
-	display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  img{
-    margin-bottom: 32px;
-  }
-
-  input{
-    height: 45px;
-    width: 303px;
-    margin-bottom: 6px;
-    background: #FFFFFF;
-    border: 1px solid #D5D5D5;
-    border-radius: 5px;
-    ::placeholder{
-      color: #DBDBDB;
-      font-size: 20px;
-      padding-left: 10px;
-      text-decoration: none;
-    }
-
-  }
-
-  button{
-    height: 45px;
-    width: 303px;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    color: white;
-    text-align: center;
-    margin-bottom: 25px;
-    background-color: #52B6FF;
-  }
-  button:hover{
-    opacity: 0.75;
-    cursor: pointer;
-  }
-`
-
-const Login = styled.div`
-  color: #52B6FF;
-  font-family: 'Lexend Deca';
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  text-decoration: underline;
-`
-
+  {/* <ThreeDots 
+  height="80" 
+  width="80" 
+  radius="9"
+  color="white" 
+  ariaLabel="three-dots-loading"
+  wrapperStyle={{}}
+  wrapperClassName=""
+  visible={true}
+/> */}

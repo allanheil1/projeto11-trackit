@@ -1,14 +1,58 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import Logo from '../../assets/logo.png'
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useState } from "react";
+import { ThreeDots } from 'react-loader-spinner';
+import axios from 'axios';
+
+import Logo from '../../assets/logo.png';
+import { LoginPagesStyles, Cadastre, Form } from './style';
+import UserContext from '../../contexts/UserContext';
 
 export default function LoginPage() {
+
+    const navigate = useNavigate();
+    const {token, setToken} = useContext(UserContext);
+    const {userIcon, setUserIcon} = useContext(UserContext);
+    const [isLoading, setIsLoading] = useState(false);
+    const [loginData, setLoginData] = useState({
+      email: '',
+      password: ''
+    });
+
+    function LoginAPI(e){
+      e.preventDefault();
+      setIsLoading(true);
+      const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login', loginData);
+      promise.then((res) => {
+        setIsLoading(false);
+        setToken(res.data.token);
+        setUserIcon(res.data.image);
+        navigate('/hoje');
+      });
+    }
+
+    function OnChange(e) {
+      setLoginData({ ...loginData, [e.target.name]: e.target.value });
+    }
+
     return (
       <LoginPagesStyles>
         <img src={Logo} />
-        <input type='email' placeholder='email'></input>
-        <input type='password' placeholder='senha'></input>
-        <button>Entrar</button>
+
+        <Form onSubmit={LoginAPI}>
+          <input 
+            type='email' placeholder='email'
+            value={loginData.email} name='email'
+            onChange={OnChange}  required
+          />
+          <input 
+            type='password' placeholder='senha'
+            value={loginData.password} name='password'
+            onChange={OnChange}  required
+          />
+          <button type='submit' disabled={isLoading}>Entrar</button>
+        </Form>
+
         <Link to='/cadastro'>
           <Cadastre>
             Não tem uma conta? Cadastre-se!
@@ -18,57 +62,14 @@ export default function LoginPage() {
     );
   }
 
-const LoginPagesStyles = styled.div`
-  width: 100%;
-  height: 100vh;
-	display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  img{
-    margin-bottom: 32px;
-  }
-
-  input{
-    height: 45px;
-    width: 303px;
-    margin-bottom: 6px;
-    background: #FFFFFF;
-    border: 1px solid #D5D5D5;
-    border-radius: 5px;
-    ::placeholder{
-      color: #DBDBDB;
-      font-size: 20px;
-      padding-left: 10px;
-      text-decoration: none;
-    }
-
-  }
-
-  button{
-    height: 45px;
-    width: 303px;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    color: white;
-    text-align: center;
-    margin-bottom: 25px;
-    background-color: #52B6FF;
-  }
-  button:hover{
-    opacity: 0.75;
-    cursor: pointer;
-  }
-`
-
-const Cadastre = styled.div`
-  color: #52B6FF;
-  font-family: 'Lexend Deca';
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  text-decoration: underline;
-`
+{/* <ThreeDots 
+  height="80" 
+  width="80" 
+  radius="9"
+  color="white" 
+  ariaLabel="three-dots-loading"
+  wrapperStyle={{}}
+  wrapperClassName=""
+  visible={true}
+/> */}
 
