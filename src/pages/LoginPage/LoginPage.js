@@ -29,6 +29,11 @@ export default function LoginPage() {
         setUserIcon(res.data.image);
         navigate('/hoje');
       });
+      promise.catch((err) => {
+        setIsLoading(false);
+        const errorMsg = err.response.statusText;
+        alert(`Erro: ${errorMsg}`);
+      })
     }
 
     function OnChange(e) {
