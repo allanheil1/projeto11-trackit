@@ -11,20 +11,22 @@ export default function Footer() {
         Hábitos
       </Link>
       <CircularProgressbarWrapper>
-        <CircularProgressbar
-          value={66}
-          text={'Hoje'}
-          background
-          backgroundPadding={6}
-          styles={buildStyles({
-            backgroundColor: "#52B6FF",
-            textColor: "white",
-            pathColor: "white",
-            trailColor: "transparent"
-          })}
-        />
+        <Link to='/hoje'>
+          <CircularProgressbar
+            value={66}
+            text={'Hoje'}
+            background
+            backgroundPadding={6}
+            styles={buildStyles({
+              backgroundColor: "#52B6FF",
+              textColor: "white",
+              pathColor: "white",
+              trailColor: "transparent"
+            })}
+          />
+        </Link>
       </CircularProgressbarWrapper>
-      <Link to='historico'>
+      <Link to='/historico'>
         Histórico
       </Link>
     </FooterStyle>

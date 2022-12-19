@@ -34,3 +34,10 @@ export const TodayTitle = styled.div`
         color: #BABABA;
     }
 `
+
+export const EmptyMessage = styled.div`
+    margin-top: 28px;
+    width: 338px;
+    font-size: 18px;
+    color: #666666;
+`

@@ -20,11 +20,9 @@ function Weekday({ id, daysSelected, setDaysSelected, dayLetter }){
         let novoDaysSelected = daysSelected;
         if(novoDaysSelected.includes(id)){
             novoDaysSelected = novoDaysSelected.filter(item => item !== id);
-            console.log(novoDaysSelected);
             SetIsSelected(false);
         }else{
             novoDaysSelected = [...novoDaysSelected, id];
-            console.log(novoDaysSelected);
             SetIsSelected(true);
         }
         setDaysSelected(novoDaysSelected);

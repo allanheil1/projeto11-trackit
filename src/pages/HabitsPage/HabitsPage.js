@@ -17,22 +17,28 @@ export default function HabitsPage(){
     const [isCreatingHabit, setIsCreatingHabit] = useState(false);
 
     useEffect(() => {
-      const config = { headers: {Authorization: `Bearer ${token}`}};
-      const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits', config);
-      promise.then((res) => {
-        console.log(res.data);
-        setHabits(res.data);
-        //caso venha dados, nao precisamos mais mostrar a mensagem de 'não há hábitos'
-        res.data.length > 0 && SetEmptyMessageView(false);
-      });
-      promise.catch((err) => {
-        const errorMsg = err.response.statusText;
-        alert(`Erro: ${errorMsg}`);
-      });
+      getHabits();
     }, []);
 
     function showCreateHabit(){
       setIsCreatingHabit(!isCreatingHabit);
+    }
+
+    function getHabits(){
+      const config = { headers: {Authorization: `Bearer ${token}`}};
+      console.log(token);
+      const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits', config);
+
+      promise.then((res) => {
+        setHabits(res.data);
+        //caso venha dados, nao precisamos mais mostrar a mensagem de 'não há hábitos'
+        res.data.length > 0 && SetEmptyMessageView(false);
+      });
+
+      promise.catch((err) => {
+        const errorMsg = err.response.statusText;
+        alert(`Erro: ${errorMsg}`);
+      });
     }
 
     return(
@@ -45,7 +51,7 @@ export default function HabitsPage(){
             <button onClick={showCreateHabit}> + </button>
           </MyHabits>
 
-          {isCreatingHabit && <CreateHabit setIsCreatingHabit={setIsCreatingHabit}/>}
+          {isCreatingHabit && <CreateHabit setIsCreatingHabit={setIsCreatingHabit} getHabits={getHabits}/>}
 
           {(emptyMessageView && habits.length === 0) && 
           <EmptyMessage> 

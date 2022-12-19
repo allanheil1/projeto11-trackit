@@ -5,7 +5,7 @@ import UserContext from '../../../contexts/UserContext';
 import Weekdays from '../../../components/Weekdays/Weekdays';
 import { CreateHabitStyle, ButtonsWrapper, Button } from './style';
 
-export default function CreateHabit({ setIsCreatingHabit }) {
+export default function CreateHabit({ setIsCreatingHabit, getHabits }) {
 
     const [daysSelected, setDaysSelected] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -38,12 +38,12 @@ export default function CreateHabit({ setIsCreatingHabit }) {
         setIsLoading(false);
         setDaysSelected([]);
         setIsCreatingHabit(false);
-        window.location.reload();
+        getHabits();
       });
       promise.catch((err) => {
         const errorMsg = err.response.statusText;
         setIsLoading(false);
-        console.log(`Erro: ${errorMsg}`);
+        alert(`Erro: ${errorMsg}`);
       });
     }
 

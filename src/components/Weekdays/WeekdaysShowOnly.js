@@ -16,7 +16,6 @@ function WeekdayShowOnly({ id, habitDays, dayLetter }){
     const [isSelected, SetIsSelected] = useState(false);
 
     useEffect(() => {
-        console.log(habitDays);
         if(habitDays.includes(id)){
             SetIsSelected(true);
         }

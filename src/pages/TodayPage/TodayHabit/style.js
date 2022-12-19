@@ -35,7 +35,7 @@ export const CheckHabit = styled.div`
     height: 69px;
     right: 13px;
     top: 13px;
-    background: #E7E7E7; //#8FC549
+    background: ${props => (props.done ? '#8FC549' : '#E7E7E7')};
     border-radius: 5px;
     font-size: 60px;
     color: white;
