@@ -16,4 +16,8 @@ export const HabitStyle = styled.div`
         top: 10px;
         right: 10px;
     }
+    h1{
+        color: #666666;
+        font-size: 20px;
+    }
 `

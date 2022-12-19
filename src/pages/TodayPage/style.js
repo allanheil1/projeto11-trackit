@@ -32,6 +32,7 @@ export const TodayTitle = styled.div`
         margin-left: 28px;
         font-size: 18px;
         color: #BABABA;
+        color: ${props => (props.qtyTodayHabitsDone !== 0 ? '#8FC549' : '#666666')};
     }
 `
 
