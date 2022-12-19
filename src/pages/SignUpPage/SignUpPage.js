@@ -62,10 +62,22 @@ export default function SignUpPage() {
             value={signUpData.image} name='image'
             onChange={OnChange} required
           />
-          <button type='submit' disabled={isLoading}>Cadastrar</button>
+          <button type='submit' disabled={isLoading}>
+            {isLoading ? 
+              <ThreeDots 
+              height="80" 
+              width="80" 
+              radius="9"
+              color="white" 
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            /> : 'Cadastrar'}
+          </button>
         </Form>
 
-        <Link to='/'>
+        <Link to={isLoading ? '' : '/'}>
           <Login>
             Já tem uma conta? Faça Login!
           </Login>

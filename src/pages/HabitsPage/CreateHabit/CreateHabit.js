@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useContext } from 'react';
+import { ThreeDots } from 'react-loader-spinner';
 
 import UserContext from '../../../contexts/UserContext';
 import Weekdays from '../../../components/Weekdays/Weekdays';
@@ -49,7 +50,7 @@ export default function CreateHabit({ setIsCreatingHabit, getHabits }) {
 
     return (
       <>
-        <CreateHabitStyle>
+        <CreateHabitStyle isLoading={isLoading}>
             <input 
               placeholder='nome do hábito'
               type='text' 
@@ -60,7 +61,20 @@ export default function CreateHabit({ setIsCreatingHabit, getHabits }) {
             <Weekdays daysSelected={daysSelected} setDaysSelected={setDaysSelected}/>
             <ButtonsWrapper>
                 <Button type='cancelar' onClick={cancelCreation} disabled={isLoading}> Cancelar </Button>
-                <Button type='salvar' onClick={checkHabit} disabled={isLoading}> Salvar </Button>
+                <Button type='salvar' onClick={checkHabit} disabled={isLoading}> 
+                  {isLoading ? 
+                    <ThreeDots 
+                    height="50" 
+                    width="50" 
+                    radius="9"
+                    color="white" 
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{}}
+                    wrapperClassName=""
+                    visible={true}
+                  />
+                  : 'Salvar'}  
+                </Button>
             </ButtonsWrapper>
         </CreateHabitStyle>
       </>

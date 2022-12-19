@@ -35,12 +35,16 @@ export default function HabitsPage() {
             doneTodayHabits++;
           }
         });
-        //if(doneTodayHabits !== 0){
+        if(res.data.length !== 0){
           let perc = (doneTodayHabits / qtyTodayHabits) * 100;
           setSubHeading(`${perc.toFixed(0)}% dos hábitos concluídos!`);
           setProgressPerc(perc);
           setqtyTodayHabitsDone(doneTodayHabits);
-        //}
+        }else{
+          setSubHeading(`0% dos hábitos concluídos!`);
+          setProgressPerc(0);
+          setqtyTodayHabitsDone(0);
+        }
       });
 
       promise.catch((err) => {

@@ -10,7 +10,7 @@ export const CreateHabitStyle = styled.div`
     height: 180px;
     width: 340px;
     margin-top: 10px;
-
+    opacity: ${props => (props.isLoading ? 0.7 : 1)};
     input{
         width: 303px;
         height: 45px;
@@ -30,6 +30,9 @@ export const ButtonsWrapper = styled.div`
 `
 
 export const Button = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 84px;
     height: 35px;
     background-color: ${props => (props.type === 'salvar' 
@@ -40,4 +43,5 @@ export const Button = styled.button`
     margin-right: 15px;
     border-radius: 5px;
     font-size: 16px;
+    opacity: ${props => (props.disabled ? 0.7 : 1)};
 `

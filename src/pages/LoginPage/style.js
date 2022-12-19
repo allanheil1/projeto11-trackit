@@ -42,10 +42,10 @@ export const LoginPagesStyles = styled.div`
     text-align: center;
     margin-bottom: 25px;
     background-color: #52B6FF;
-  }
-  button:hover{
-    opacity: 0.75;
     cursor: pointer;
+  }
+  button:disabled{
+      opacity: 0.7;
   }
 `
 

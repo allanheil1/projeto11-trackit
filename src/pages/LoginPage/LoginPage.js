@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from "react";
 import { ThreeDots } from 'react-loader-spinner';
@@ -11,8 +10,8 @@ import UserContext from '../../contexts/UserContext';
 export default function LoginPage() {
 
     const navigate = useNavigate();
-    const {token, setToken} = useContext(UserContext);
-    const {userIcon, setUserIcon} = useContext(UserContext);
+    const { setToken } = useContext(UserContext);
+    const { setUserIcon } = useContext(UserContext);
     const [isLoading, setIsLoading] = useState(false);
     const [loginData, setLoginData] = useState({
       email: '',
@@ -48,17 +47,29 @@ export default function LoginPage() {
           <input 
             type='email' placeholder='email'
             value={loginData.email} name='email'
-            onChange={OnChange}  required
+            onChange={OnChange}  required disabled={isLoading}
           />
           <input 
             type='password' placeholder='senha'
             value={loginData.password} name='password'
-            onChange={OnChange}  required
+            onChange={OnChange}  required disabled={isLoading}
           />
-          <button type='submit' disabled={isLoading}>Entrar</button>
+          <button type='submit' disabled={isLoading}>
+           {isLoading ? 
+              <ThreeDots 
+                height="80" 
+                width="80" 
+                radius="9"
+                color="white" 
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={true}
+              /> : 'Entrar'} 
+          </button>
         </Form>
 
-        <Link to='/cadastro'>
+        <Link to={isLoading ? '' : '/cadastro'}>
           <Cadastre>
             Não tem uma conta? Cadastre-se!
           </Cadastre>
@@ -66,15 +77,4 @@ export default function LoginPage() {
       </LoginPagesStyles>
     );
   }
-
-{/* <ThreeDots 
-  height="80" 
-  width="80" 
-  radius="9"
-  color="white" 
-  ariaLabel="three-dots-loading"
-  wrapperStyle={{}}
-  wrapperClassName=""
-  visible={true}
-/> */}
 
