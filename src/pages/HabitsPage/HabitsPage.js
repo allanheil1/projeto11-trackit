@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
 import { useState, useEffect, useContext } from "react";
 import axios from 'axios';
+import { ThreeDots } from 'react-loader-spinner';
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Habit from './Habit/Habit';
 import CreateHabit from './CreateHabit/CreateHabit';
-import { HabitsPageStyle, MyHabits, EmptyMessage } from './style';
+import { HabitsPageStyle, MyHabits, EmptyMessage, Button } from './style';
 import UserContext from '../../contexts/UserContext';
 
 export default function HabitsPage(){
@@ -31,13 +31,34 @@ export default function HabitsPage(){
       promise.then((res) => {
         setHabits(res.data);
         //caso venha dados, nao precisamos mais mostrar a mensagem de 'não há hábitos'
-        res.data.length > 0 && SetEmptyMessageView(false);
+        SetEmptyMessageView(false);
       });
 
       promise.catch((err) => {
         const errorMsg = err.response.statusText;
         alert(`Erro: ${errorMsg}`);
       });
+    }
+
+    if((emptyMessageView && habits.length === 0)){
+      return(
+        <>
+        <Header />
+        <HabitsPageStyle>
+          <ThreeDots 
+            height="100" 
+            width="100" 
+            radius="9"
+            color="#52B6FF" 
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+          /> 
+        </HabitsPageStyle>
+        <Footer />
+      </>  
+      );
     }
 
     return(
@@ -47,12 +68,12 @@ export default function HabitsPage(){
 
           <MyHabits>
             <h1> Meus hábitos </h1>
-            <button onClick={showCreateHabit}> + </button>
+            <Button onClick={showCreateHabit}> + </Button>
           </MyHabits>
 
           {isCreatingHabit && <CreateHabit setIsCreatingHabit={setIsCreatingHabit} getHabits={getHabits}/>}
 
-          {(emptyMessageView && habits.length === 0) && 
+          {(habits.length === 0) && 
           <EmptyMessage> 
             Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
           </EmptyMessage>}

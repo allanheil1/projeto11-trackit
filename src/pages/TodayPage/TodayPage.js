@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import { useState, useEffect, useContext } from 'react';
 import UserContext from '../../contexts/UserContext';
+import { ThreeDots } from 'react-loader-spinner';
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -14,9 +14,9 @@ export default function HabitsPage() {
     const days = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
     const { token, setProgressPerc } = useContext(UserContext);
     const [todayHabits, setTodayHabits] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
     const [subHeading, setSubHeading] = useState('Nenhum Hábito concluido ainda!');
     const [qtyTodayHabitsDone, setqtyTodayHabitsDone] = useState(0);
+    const [emptyMessageView, SetEmptyMessageView] = useState(true);
 
     useEffect(() => {
       getTodayHabits();
@@ -29,6 +29,7 @@ export default function HabitsPage() {
       promise.then((res) => {
         const qtyTodayHabits = res.data.length;
         setTodayHabits(res.data);
+        SetEmptyMessageView(false);
         let doneTodayHabits = 0;
         res.data.forEach(habit => {
           if(habit.done){
@@ -53,6 +54,27 @@ export default function HabitsPage() {
       });
     }
 
+    if((emptyMessageView && todayHabits.length === 0)){
+      return(
+        <>
+        <Header />
+        <TodayPageStyle>
+          <ThreeDots 
+            height="100" 
+            width="100" 
+            radius="9"
+            color="#52B6FF" 
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+          /> 
+        </TodayPageStyle>
+        <Footer />
+      </>  
+      );
+    }
+
     return (
       <>
         <Header />
@@ -60,7 +82,12 @@ export default function HabitsPage() {
           <TodayTitle qtyTodayHabitsDone={qtyTodayHabitsDone}>
             <h1> {days[dayjs().day()]}, {dayjs().format('DD/MM')} </h1>
             <h2> {subHeading} </h2>
+            {(todayHabits.length === 0) && 
+              <EmptyMessage> 
+                <h2>Você não tem nenhum hábito cadastrado para hoje. Adicione um hábito para começar a trackear!</h2>
+              </EmptyMessage>}
           </TodayTitle>
+
           {todayHabits.length !== 0 && (
             todayHabits.map(h => (
             <TodayHabit 

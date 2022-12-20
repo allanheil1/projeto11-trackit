@@ -25,16 +25,22 @@ export const MyHabits = styled.div`
     h1{
         margin-left: 28px;
     }
-    button{
-        margin-right: 28px;
-        height: 35px;
-        width: 40px;
-        color: white;
-        font-size: 27px;
-        border-radius: 5px;
-        border: none;
-        background-color: #52B6FF;
-    }
+`
+
+export const Button = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 28px;
+    height: 35px;
+    width: 40px;
+    color: white;
+    font-size: 27px;
+    border-radius: 5px;
+    border: none;
+    background-color: #52B6FF;
+    line-height: 34px;
 `
 
 export const EmptyMessage = styled.div`
