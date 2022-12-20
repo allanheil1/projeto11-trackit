@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useContext } from 'react';
 
-import { Box, TodaytHabitStyle, CheckHabit } from './style';
+import { Box, TodaytHabitStyle, CheckHabit, StyledText } from './style';
 import UserContext from '../../../contexts/UserContext';
 
 export default function TodayHabit({ id, name, done, currentSequence, highestSequence, getTodayHabits }) {
@@ -38,10 +38,10 @@ export default function TodayHabit({ id, name, done, currentSequence, highestSeq
   
     return (
       <Box>
-        <TodaytHabitStyle>
+        <TodaytHabitStyle done={done} high={highestSequence} current={currentSequence}>
           <h1> {name} </h1>
-          <h2> Sequência atual: {currentSequence} dias </h2>
-          <h3> Seu recorde: {highestSequence} dias </h3>
+          <h2> Sequência atual: <span>{currentSequence} dias </span></h2>
+          <h3> Seu recorde: <span>{highestSequence} dias </span></h3>
           <CheckHabit done={done} onClick={() => clickedHabit()}> ✓ </CheckHabit>
         </TodaytHabitStyle>
       </Box>

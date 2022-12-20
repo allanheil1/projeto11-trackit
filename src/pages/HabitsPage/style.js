@@ -28,10 +28,6 @@ export const MyHabits = styled.div`
 `
 
 export const Button = styled.button`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     margin-right: 28px;
     height: 35px;
     width: 40px;
@@ -40,7 +36,6 @@ export const Button = styled.button`
     border-radius: 5px;
     border: none;
     background-color: #52B6FF;
-    line-height: 34px;
 `
 
 export const EmptyMessage = styled.div`

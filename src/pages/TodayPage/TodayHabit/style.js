@@ -22,11 +22,20 @@ export const TodaytHabitStyle = styled.div`
         margin-top: 15px;
         margin-left: 15px;
         font-size: 13px;
+        span{
+            font-size: 13px;
+            color: ${props => (props.done ? '#8FC549' : '#666666')}
+        }
     }
     h3{ 
         margin-left: 15px;
         font-size: 13px;
+        span{
+            font-size: 13px;
+            color: ${props => (props.done ? (props.current >= props.high ? '#8FC549' : '#666666') : '#666666')}
+        }
     }
+
 `
 
 export const CheckHabit = styled.div`
