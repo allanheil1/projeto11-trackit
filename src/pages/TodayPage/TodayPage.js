@@ -80,8 +80,8 @@ export default function HabitsPage() {
         <Header />
         <TodayPageStyle>
           <TodayTitle qtyTodayHabitsDone={qtyTodayHabitsDone}>
-            <h1> {days[dayjs().day()]}, {dayjs().format('DD/MM')} </h1>
-            <h2> {subHeading} </h2>
+            <h1 data-test='today'> {days[dayjs().day()]}, {dayjs().format('DD/MM')} </h1>
+            <h2 data-test='today-counter'> {subHeading} </h2>
             {(todayHabits.length === 0) && 
               <EmptyMessage> 
                 <h2>Você não tem nenhum hábito cadastrado para hoje. Adicione um hábito para começar a trackear!</h2>

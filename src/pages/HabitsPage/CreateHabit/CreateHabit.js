@@ -50,18 +50,19 @@ export default function CreateHabit({ setIsCreatingHabit, getHabits }) {
 
     return (
       <>
-        <CreateHabitStyle isLoading={isLoading}>
+        <CreateHabitStyle isLoading={isLoading} data-test='habit-create-container'>
             <input 
               placeholder='nome do hábito'
               type='text' 
               disabled={isLoading} 
               onChange={e => setHabitName(e.target.value)} 
-              value={habitName} 
+              value={habitName}
+              data-test='habit-name-input' 
             />
             <Weekdays daysSelected={daysSelected} setDaysSelected={setDaysSelected} isLoading={isLoading}/>
             <ButtonsWrapper>
-                <Button type='cancelar' onClick={cancelCreation} disabled={isLoading}> Cancelar </Button>
-                <Button type='salvar' onClick={checkHabit} disabled={isLoading}> 
+                <Button type='cancelar' onClick={cancelCreation} disabled={isLoading} data-test='habit-create-cancel-btn' > Cancelar </Button>
+                <Button type='salvar' onClick={checkHabit} disabled={isLoading} data-test='habit-create-save-btn' > 
                   {isLoading ? 
                     <ThreeDots 
                     height="50" 

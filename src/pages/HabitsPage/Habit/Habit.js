@@ -8,7 +8,7 @@ import Trashbin from '../../../assets/trashbin.png'
 
 export default function Habit({ habitName, habitDays, habitId, getHabits }) {
 
-  const { token, setProgressPerc } = useContext(UserContext);
+  const { token } = useContext(UserContext);
 
     async function deleteHabit(id){
       if(window.confirm('Deseja realmente deletar esse hábito?')){
@@ -19,9 +19,9 @@ export default function Habit({ habitName, habitDays, habitId, getHabits }) {
     }
 
     return (
-      <HabitStyle>
-          <h1> {habitName} </h1>
-          <img src={Trashbin} onClick={() => deleteHabit(habitId)}/> 
+      <HabitStyle data-test='habit-container'>
+          <h1 data-test='habit-name'> {habitName} </h1>
+          <img src={Trashbin} onClick={() => deleteHabit(habitId)} data-test='habit-delete-btn'/> 
           <WeekdaysShowOnly habitDays={habitDays}/>
       </HabitStyle>
     );

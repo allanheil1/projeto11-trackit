@@ -29,7 +29,7 @@ function Weekday({ id, daysSelected, setDaysSelected, dayLetter, isLoading }){
     }
 
     return(
-        <WeekdayStyleButton onClick={selectDay} isSelected={isSelected} disabled={isLoading}>
+        <WeekdayStyleButton onClick={selectDay} isSelected={isSelected} disabled={isLoading} data-test='habit-day' >
             {dayLetter}
         </WeekdayStyleButton>
     );

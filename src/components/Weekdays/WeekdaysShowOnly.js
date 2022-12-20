@@ -22,7 +22,7 @@ function WeekdayShowOnly({ id, habitDays, dayLetter }){
     });
 
     return(
-        <WeekdayStyleButton isSelected={isSelected}>
+        <WeekdayStyleButton isSelected={isSelected} data-test='habit-day'>
             {dayLetter}
         </WeekdayStyleButton>
     );

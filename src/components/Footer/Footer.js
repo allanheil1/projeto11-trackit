@@ -11,12 +11,12 @@ export default function Footer() {
   const { progressPerc } = useContext(UserContext);
 
   return (
-    <FooterStyle>
-      <Link to='/habitos'>
+    <FooterStyle data-test='menu'>
+      <Link to='/habitos' data-test='habit-link'>
         Hábitos
       </Link>
       <CircularProgressbarWrapper>
-        <Link to='/hoje'>
+        <Link to='/hoje' data-test='today-link'>
           <CircularProgressbar
             value={progressPerc}
             text={'Hoje'}
@@ -31,7 +31,7 @@ export default function Footer() {
           />
         </Link>
       </CircularProgressbarWrapper>
-      <Link to='/historico'>
+      <Link to='/historico' data-test='history-link'>
         Histórico
       </Link>
     </FooterStyle>

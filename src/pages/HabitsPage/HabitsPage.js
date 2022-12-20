@@ -68,7 +68,7 @@ export default function HabitsPage(){
 
           <MyHabits>
             <h1> Meus hábitos </h1>
-            <Button onClick={showCreateHabit}> + </Button>
+            <Button onClick={showCreateHabit} data-test='habit-create-btn'> + </Button>
           </MyHabits>
 
           {isCreatingHabit && <CreateHabit setIsCreatingHabit={setIsCreatingHabit} getHabits={getHabits}/>}

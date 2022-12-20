@@ -9,7 +9,7 @@ export default function Header() {
     const { userIcon } = useContext(UserContext);
 
     return (
-      <HeaderStyle>
+      <HeaderStyle data-test='header'>
         <img src={LogoName}/>
         <div>
           <img src={userIcon} />

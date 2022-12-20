@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
 import axios from 'axios';
@@ -46,23 +45,27 @@ export default function SignUpPage() {
             type='email' placeholder='email'
             value={signUpData.email} name='email'
             onChange={OnChange} required
+            data-test='email-input'
           />
           <input 
             type='password' placeholder='senha'
             value={signUpData.password} name='password'
             onChange={OnChange} required
+            data-test='password-input'
           />
           <input 
             type='text' placeholder='nome'
             value={signUpData.name} name='name'
             onChange={OnChange} required
+            data-test='user-name-input'
           />
           <input 
             type='text' placeholder='foto'
             value={signUpData.image} name='image'
             onChange={OnChange} required
+            data-test='user-image-input'
           />
-          <button type='submit' disabled={isLoading}>
+          <button type='submit' disabled={isLoading} data-test='signup-btn'>
             {isLoading ? 
               <ThreeDots 
               height="80" 
@@ -77,7 +80,7 @@ export default function SignUpPage() {
           </button>
         </Form>
 
-        <Link to={isLoading ? '' : '/'}>
+        <Link to={isLoading ? '' : '/'} data-test='login-link'>
           <Login>
             Já tem uma conta? Faça Login!
           </Login>

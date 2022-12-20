@@ -48,13 +48,15 @@ export default function LoginPage() {
             type='email' placeholder='email'
             value={loginData.email} name='email'
             onChange={OnChange}  required disabled={isLoading}
+            data-test='email-input'
           />
           <input 
             type='password' placeholder='senha'
             value={loginData.password} name='password'
             onChange={OnChange}  required disabled={isLoading}
+            data-test='password-input'
           />
-          <button type='submit' disabled={isLoading}>
+          <button type='submit' disabled={isLoading} data-test='login-btn'>
            {isLoading ? 
               <ThreeDots 
                 height="80" 
@@ -69,7 +71,7 @@ export default function LoginPage() {
           </button>
         </Form>
 
-        <Link to={isLoading ? '' : '/cadastro'}>
+        <Link to={isLoading ? '' : '/cadastro'} data-test='signup-link'>
           <Cadastre>
             Não tem uma conta? Cadastre-se!
           </Cadastre>
