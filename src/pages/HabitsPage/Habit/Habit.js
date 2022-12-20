@@ -3,7 +3,7 @@ import { useContext } from 'react';
 
 import UserContext from '../../../contexts/UserContext';
 import WeekdaysShowOnly from '../../../components/Weekdays/WeekdaysShowOnly';
-import { HabitStyle } from './style';
+import { HabitStyle, Box } from './style';
 import Trashbin from '../../../assets/trashbin.png'
 
 export default function Habit({ habitName, habitDays, habitId, getHabits }) {
@@ -19,10 +19,12 @@ export default function Habit({ habitName, habitDays, habitId, getHabits }) {
     }
 
     return (
-      <HabitStyle data-test='habit-container'>
-          <h1 data-test='habit-name'> {habitName} </h1>
-          <img src={Trashbin} onClick={() => deleteHabit(habitId)} data-test='habit-delete-btn'/> 
-          <WeekdaysShowOnly habitDays={habitDays}/>
-      </HabitStyle>
+      <Box>
+        <HabitStyle data-test='habit-container'>
+            <h1 data-test='habit-name'> {habitName} </h1>
+            <img src={Trashbin} onClick={() => deleteHabit(habitId)} data-test='habit-delete-btn'/> 
+            <WeekdaysShowOnly habitDays={habitDays}/>
+        </HabitStyle>
+      </Box>
     );
   }
