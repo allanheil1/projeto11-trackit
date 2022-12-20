@@ -8,7 +8,7 @@ import Trashbin from '../../../assets/trashbin.png'
 
 export default function Habit({ habitName, habitDays, habitId, getHabits }) {
 
-  const { token } = useContext(UserContext);
+  const { token, setProgressPerc } = useContext(UserContext);
 
     async function deleteHabit(id){
       if(window.confirm('Deseja realmente deletar esse hábito?')){

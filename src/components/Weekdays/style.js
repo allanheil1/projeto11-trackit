@@ -5,7 +5,7 @@ export const WeekdaysStyle = styled.div`
     gap: 4px;
 `
 
-export const WeekdayStyle = styled.div`
+export const WeekdayStyleButton = styled.button`
     width: 30px;
     height: 30px;
     background: ${props => (props.isSelected === true ? '#CFCFCF' : '#FFFFFF')};

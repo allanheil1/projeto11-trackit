@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { WeekdaysStyle, WeekdayStyle } from './style'
+import { WeekdaysStyle, WeekdayStyleButton } from './style'
 
 let days = [
     {id: 0, letter: 'D', name: 'Domingo'},
@@ -22,9 +22,9 @@ function WeekdayShowOnly({ id, habitDays, dayLetter }){
     });
 
     return(
-        <WeekdayStyle isSelected={isSelected}>
+        <WeekdayStyleButton isSelected={isSelected}>
             {dayLetter}
-        </WeekdayStyle>
+        </WeekdayStyleButton>
     );
 }
 

@@ -58,7 +58,7 @@ export default function CreateHabit({ setIsCreatingHabit, getHabits }) {
               onChange={e => setHabitName(e.target.value)} 
               value={habitName} 
             />
-            <Weekdays daysSelected={daysSelected} setDaysSelected={setDaysSelected}/>
+            <Weekdays daysSelected={daysSelected} setDaysSelected={setDaysSelected} isLoading={isLoading}/>
             <ButtonsWrapper>
                 <Button type='cancelar' onClick={cancelCreation} disabled={isLoading}> Cancelar </Button>
                 <Button type='salvar' onClick={checkHabit} disabled={isLoading}> 

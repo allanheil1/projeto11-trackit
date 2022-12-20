@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { WeekdaysStyle, WeekdayStyle } from './style'
+import { WeekdaysStyle, WeekdayStyleButton } from './style'
 
 let days = [
     {id: 0, letter: 'D', name: 'Domingo'},
@@ -12,7 +12,7 @@ let days = [
     {id: 6, letter: 'S', name: 'Sábado'}
 ]
 
-function Weekday({ id, daysSelected, setDaysSelected, dayLetter }){
+function Weekday({ id, daysSelected, setDaysSelected, dayLetter, isLoading }){
 
     const [isSelected, SetIsSelected] = useState(false);
 
@@ -29,13 +29,13 @@ function Weekday({ id, daysSelected, setDaysSelected, dayLetter }){
     }
 
     return(
-        <WeekdayStyle onClick={selectDay} isSelected={isSelected}>
+        <WeekdayStyleButton onClick={selectDay} isSelected={isSelected} disabled={isLoading}>
             {dayLetter}
-        </WeekdayStyle>
+        </WeekdayStyleButton>
     );
 }
 
-export default function Weekdays( {daysSelected, setDaysSelected }){
+export default function Weekdays( {daysSelected, setDaysSelected, isLoading }){
     return(
         <WeekdaysStyle>
             {days.map(day => (
@@ -45,6 +45,7 @@ export default function Weekdays( {daysSelected, setDaysSelected }){
                     dayLetter = {day.letter}
                     daysSelected = {daysSelected}
                     setDaysSelected = {setDaysSelected}
+                    isLoading = {isLoading}
                 />
             ))}
         </WeekdaysStyle>
