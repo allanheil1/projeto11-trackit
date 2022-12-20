@@ -46,24 +46,28 @@ export default function SignUpPage() {
             value={signUpData.email} name='email'
             onChange={OnChange} required
             data-test='email-input'
+            disabled={isLoading}
           />
           <input 
             type='password' placeholder='senha'
             value={signUpData.password} name='password'
             onChange={OnChange} required
             data-test='password-input'
+            disabled={isLoading}
           />
           <input 
             type='text' placeholder='nome'
             value={signUpData.name} name='name'
             onChange={OnChange} required
             data-test='user-name-input'
+            disabled={isLoading}
           />
           <input 
             type='text' placeholder='foto'
             value={signUpData.image} name='image'
             onChange={OnChange} required
             data-test='user-image-input'
+            disabled={isLoading}
           />
           <button type='submit' disabled={isLoading} data-test='signup-btn'>
             {isLoading ? 

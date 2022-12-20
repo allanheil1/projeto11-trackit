@@ -38,11 +38,15 @@ export default function HabitsPage() {
         });
         if(res.data.length !== 0){
           let perc = (doneTodayHabits / qtyTodayHabits) * 100;
-          setSubHeading(`${perc.toFixed(0)}% dos hábitos concluídos!`);
+          if(doneTodayHabits !== 0){
+            setSubHeading(`${perc.toFixed(0)}% dos hábitos concluídos!`);
+          }else{
+            setSubHeading(`Nenhum hábito concluído ainda`);
+          }
           setProgressPerc(perc);
           setqtyTodayHabitsDone(doneTodayHabits);
         }else{
-          setSubHeading(`0% dos hábitos concluídos!`);
+          setSubHeading(`Nenhum hábito concluído ainda`);
           setProgressPerc(0);
           setqtyTodayHabitsDone(0);
         }
