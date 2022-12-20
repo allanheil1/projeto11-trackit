@@ -16,6 +16,13 @@ export const CreateHabitStyle = styled.div`
         height: 45px;
         border: 1px solid #D5D5D5;
         border-radius: 5px;
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19.976px;
+        line-height: 25px;
+        padding-left: 10px;
+        color: #666666;
     }
     input::placeholder{
         color: #DBDBDB;

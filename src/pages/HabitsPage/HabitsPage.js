@@ -62,6 +62,8 @@ export default function HabitsPage(){
               key={index}
               habitName={h.name}
               habitDays={h.days}
+              habitId={h.id}
+              getHabits={getHabits}
             />
           )}
 
