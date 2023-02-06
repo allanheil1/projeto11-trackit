@@ -1,3 +1,29 @@
+# <p align = "center"> Projeto Instagram </p>
+
+<p align = "center">
+<img src="https://img.shields.io/badge/author-allanheil1-white?style=flat-square" />
+<img src="https://img.shields.io/github/languages/count/allanheil1/projeto11-trackit?color=white&style=flat-square" />
+</br>
+<br/>
+
+<p align = "center"> <img src="https://user-images.githubusercontent.com/72531277/195154939-7c243ce9-0050-4a72-8350-1708ce797174.png" /></p>
+
+</br>
+
+## ✏️ Descrição
+<p align="justify" >Projeto de aplicação web para controle de hábitos diários e semanais, com cadastro de usuário e login.</p>
+
+</br>
+
+##  <p align = "left"> :white_circle: Tecnologias</p>
+
+
+- [React](https://reactjs.org/docs/getting-started.html)
+
+</br>
+
+# 🏁 Instruções para rodar o projeto 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
